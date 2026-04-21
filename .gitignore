@@ -1,0 +1,19 @@
+# Bỏ qua các file oject (file trung gian máy tính tạo ra)
+*.o
+
+# Bỏ qua các file thực thi (file chạy chương trình)
+*.exe
+
+# Bỏ qua các file cấu hình tạm của Dev-C++
+*.layout
+*.win
+*.depend
+
+# Bỏ qua các file log
+*.log
+
+# Bỏ qua các file backup hoặc file tạm của hệ thống 
+Thums.db 
+.DS_Store
+
+
