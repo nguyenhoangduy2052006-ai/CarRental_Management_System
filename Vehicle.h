@@ -3,19 +3,19 @@
 #include <stdio.h>
 #include <string.h>
 
-#define Max_Cars 100
-#define Available 0
-#define Rented 1
-#define Maintenance 2
-#define Completed 3
+#define MAX_CARS 100
+#define AVAILABLE 0
+#define RENTED 1
+#define MAINTENANCE 2
+#define COMPLETED 3
 
 /*=================== Struct ===================*/
 typedef struct {
 	char CarID[10]; // RC001, RC002,...
 	char Brand[20];
 	char Model[20];
-	int year;
-	float DailyRate;
+	int Year;
+	double DailyRate;
 	int Status; // Available=0, Rented=1, Maintenance=2
 
 } vehicleInventory;

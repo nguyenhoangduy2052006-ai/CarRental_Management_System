@@ -15,16 +15,27 @@
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
 int main(int argc, char *argv[]) {
+	// Declare 
+	int carCount=0;
+	int rentalCount=0;
+	vehicleInventory listCar[MAX_CARS];
+	rentalTracking rentalsList [MAX_RENTALS];
+	//loadCar (listCar, &carCount);
+	//loadRental (rentalsList, &rentalCount);
+	
+	// Excute program
 	printf ("========== Welcome to RC-NHD Shop ==========\n");
 	printf ("\t\t||(0)-(0)||\n\n");
 	int choice;
 	
 	do {
+		
 		printf("^^ Click Your Choice ^^\n");
 		printf ("1. Customer\n");
 		printf ("2. Server\n");
-		printf ("3. Exit\n\n");
+		printf ("0. Exit\n\n");
 		scanf ("%d", &choice);
+		system ("cls");
 		switch (choice) {
 			case 1: {
 				int customerChoice;
@@ -41,12 +52,16 @@ int main(int argc, char *argv[]) {
 						
 					printf ("6. DISPLAY DISCOUNT TABLE\n");
 						
-					printf ("7. EXIT\n\n");
+					printf ("0. EXIT\n\n");
 						
 						
 					scanf ("%d", &customerChoice);
 					// loop customer choice
 					switch (customerChoice) {
+						case 0:
+							system("cls");
+							// display thoát Menu Customer trở về Menu chính
+							break;
 						case 1:
 							// gọi hàm hiển thị bảng danh danh ô tô kèm các thông tin của mỗi chiếc ô tô (Car Name, Year, Status,...)
 							// gọi hàm gán ô tô assignCar nếu khách hàng muốn thuê xe
@@ -67,15 +82,12 @@ int main(int argc, char *argv[]) {
 						case 6:
 							// gọi hàm hiển thị bảng thông tin về khuyến mãi cho khách hàng xem
 							break;
-						case 7:
-							// display thoát Menu Customer trở về Menu chính
-							break;
 						default:
 							printf ("Error! choose again.\n");
 					}
 				
 					
-				} while (customerChoice!=7);
+				} while (customerChoice!=0);
 				
 				break;
 			}
@@ -87,10 +99,14 @@ int main(int argc, char *argv[]) {
 					printf ("REQUIRE INPUT PASSWORD: ");
 					scanf ("%s", password);
 					tries++;
-					if (strcmp(password, serverPASSWORD)!=0)
-						printf ("ERROR PASSWORD!\n");
+					if (strcmp(password, serverPASSWORD)!=0) {
+						printf ("ERROR PASSWORD!");
+						system("pause"); // nếu muốn dùng getchar thì phải xóa đi buffer 
+					}
+						
+					system("cls");
 				} while ((strcmp(password, serverPASSWORD)!=0) && tries<3);
-				
+				system("cls");
 				if (strcmp(password, serverPASSWORD)==0) {
 					int serverChoice;
 					do {
@@ -102,14 +118,43 @@ int main(int argc, char *argv[]) {
 						printf ("6. CHECK MAINTENANCE\n");
 						printf ("7. REVENUE REPORT\n");
 						printf ("8. DISPLAY LIST OF RENTAL CAR\n");
-						printf ("9. EXIT\n\n");
+						printf ("0. EXIT\n\n");
 						scanf ("%d", &serverChoice);
-						
+						system("cls");
 						switch (serverChoice) {
+							case 0:
+								system("cls");
+								printf ("CANCEL\n");
+								break;
 							case 1:
 							case 2:
 							case 3:
-							case 4:
+							case 4: {
+								int updateRentalCarChoice;
+								do {
+									system("cls");
+									printf ("1. ADD CAR\n");
+									printf ("2. REMOVE CAR\n");
+									printf ("3. UPDATE RENTAL RATE\n");
+									printf ("0. EXIT\n");
+									scanf ("%d", &updateRentalCarChoice);
+									system("cls");
+									switch (updateRentalCarChoice) {
+										case 0:
+										case 1:
+											//addVehicles (listCar, *carCount);
+											break;
+										case 2:
+										case 3:
+										default:
+											printf ("ERROR! YOUR CHOICE.\n");
+											break;
+									}
+									
+								} while (updateRentalCarChoice!=0);
+								break;
+							}
+								
 								// 1. gọi hàm addCar
 								// 2. gọi hàm removeCar
 								// 3. gọi hàm updateRentalRate
@@ -119,11 +164,10 @@ int main(int argc, char *argv[]) {
 							case 6:
 							case 7:
 							case 8:
-							case 9:
 							default:
 								printf ("ERROR! YOUR CHOICE ^^\"\n");
 						}
-					} while (serverChoice!=9);
+					} while (serverChoice!=0);
 					
 				}
 				else {
@@ -131,7 +175,7 @@ int main(int argc, char *argv[]) {
 				}
 				break;
 			}
-			case 3:
+			case 0:
 				printf ("GOOD BY SEE YOU LATER \"||(0)-(0)||\" ^_^\n");
 				// saveCars(listCar, carCount);
 				// saveRentals(rentalsList, rentalCount);
@@ -143,7 +187,7 @@ int main(int argc, char *argv[]) {
 				
 		}
 		
-	} while (choice!=3);
+	} while (choice!=0);
 	
 	
 	

@@ -3,7 +3,7 @@
 #include "Vehicle.h"
 #include <stdio.h>
 #include <string.h>
-#define Max_Rentals 100
+#define MAX_RENTALS 100
 // Define discount
 #define LUXURY 1500
 #define PRIMIUM 1000
@@ -25,8 +25,8 @@ typedef struct {
 	int Duration; // A time customer rent a car
 	int Status; // Available = 0; Rented = 1; Maintenance = 2; Completed = 3 // it is use for revenue report
 	double DailyRate;
-	double cost;
-	double finalCost;
+	double Cost;
+	double FinalCost;
 	double Discount;
 	
 } rentalTracking;
