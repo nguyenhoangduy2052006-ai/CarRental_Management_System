@@ -10,7 +10,7 @@
 void addVehicles (vehicleInventory listCar[], int *carCount) {
 	vehicleInventory addCar;
 	if (*carCount<MAX_CARS) {
-		printf ("\n --- ADD A NEW CAR --- \n");
+		printf ("\n\t\t --- ADD A NEW CAR --- |(0)-(0)|\n\n");
 		printf ("- Input Car Brand: ");
 		scanf ("%s", addCar.Brand);
 		printf ("- Input Car Model: ");
@@ -45,6 +45,34 @@ void addVehicles (vehicleInventory listCar[], int *carCount) {
 }
 
 /*------------------- removeCar -------------------*/
-
+void removeCar (vehicleInventory listCar[], int *carCount) {
+	char deleteCar[10];
+	printf ("\n\t\t --- REMOVE CAR --- |(0)-(0)|\n\n");
+	printf ("- Input car ID need remove: ");
+	scanf ("%s", deleteCar);
+	int pos=-1;
+	for (int i=0; i<*carCount; i++) {
+		if (strcmp(deleteCar, listCar[i].CarID)==0) {
+			pos=i;
+			break;
+		}
+	}
+	if (pos==-1) {
+		printf ("ERROR! CAR NOT FOUND.");
+		return;
+	}
+	if (listCar[pos].Status!=AVAILABLE) {
+		printf ("ERROR! CAR RENTED OR MAINTENANCE |(0)-(0)|");
+		return;
+	}
+	for (int j=pos; j<*carCount-1; j++) {
+		listCar[j]=listCar[j+1];
+	}
+	(*carCount)--;
+	// Save 
+	saveCar (listCar, *carCount);
+	printf ("CAR REMOVED SUCCESSFULLY! |(0)-(0)|\n");
+	
+}
 
 /*------------------- updateRentalRate -------------------*/
