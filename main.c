@@ -1,15 +1,14 @@
-// Declare library
+//================ Declare library =================== 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-// Declare files
+//================ Declare files ===================  
 #include "ConsoleIO.h"
 #include "FileHelper.h"
 #include "Rental.h"
 #include "Search.h"
-#include "Tracking.h"
 #include "Vehicle.h"
-// Define 
+//================ Define  =================== 
 #define serverPASSWORD "RC-NHD_20"
 
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
@@ -20,9 +19,10 @@ int main(int argc, char *argv[]) {
 	int rentalCount=0;
 	vehicleInventory listCar[MAX_CARS];
 	rentalTracking rentalsList [MAX_RENTALS];
-	//loadCar (listCar, &carCount);
-	//loadRental (rentalsList, &rentalCount);
-	
+	//loadCar
+	loadCar (listCar, &carCount);
+	//loadRental
+	loadRental (rentalsList, &rentalCount);
 	// Excute program
 	printf ("========== Welcome to RC-NHD Shop ==========\n");
 	printf ("\t\t||(0)-(0)||\n\n");
@@ -141,11 +141,16 @@ int main(int argc, char *argv[]) {
 									system("cls");
 									switch (updateRentalCarChoice) {
 										case 0:
+											break;
 										case 1:
-											//addVehicles (listCar, *carCount);
+											addVehicles (listCar, &carCount);
 											break;
 										case 2:
+											removeCar (listCar, &carCount);
+											break;
 										case 3:
+											updateRentalRate (listCar, carCount);
+											break;
 										default:
 											printf ("ERROR! YOUR CHOICE.\n");
 											break;

@@ -49,7 +49,7 @@ void removeCar (vehicleInventory listCar[], int *carCount) {
 	char deleteCar[10];
 	printf ("\n\t\t --- REMOVE CAR --- |(0)-(0)|\n\n");
 	printf ("- Input car ID need remove: ");
-	scanf ("%s", deleteCar);
+	scanf ("%s", deleteCar); 
 	int pos=-1;
 	for (int i=0; i<*carCount; i++) {
 		if (strcmp(deleteCar, listCar[i].CarID)==0) {
@@ -76,3 +76,42 @@ void removeCar (vehicleInventory listCar[], int *carCount) {
 }
 
 /*------------------- updateRentalRate -------------------*/
+void updateRentalRate (vehicleInventory listCar[], int carCount) {
+	printf ("\n\t\t--- UPDATE RENTAL RATE --- |(0)-(0)|\n\n");
+	double newRate;
+	char carID[10];
+	int pos=-1;
+	// Input Car ID
+	printf ("- Input Car ID: ");
+	scanf ("%s", carID);
+	for (int i=0; i<carCount; i++) {
+		if (strcmp(carID, listCar[i].CarID)==0) {
+			pos=i;
+			break;
+		}
+	}
+	if (pos==-1) {
+		printf ("ERROR! NOT FOUND CAR ID\n");
+		return;
+	}
+	// Input new rental rate
+	printf ("- Current Rental Rate: %.2lf\n", listCar[pos].DailyRate);
+	do {
+		printf ("- Change Rental Rate: ");
+		scanf ("%lf", &newRate);
+		if (newRate<500) {
+			printf ("ERROR! MIN DAILY RATE >= 500$\n");
+		}
+	} while (newRate<500);
+	listCar[pos].DailyRate=newRate;
+	// Save
+	saveCar (listCar, carCount);
+	printf ("\n\t\tUPDATE DAILY RATE SUCCESSFULLY! |(0)-(0)|\n");
+}
+
+
+
+
+
+
+
