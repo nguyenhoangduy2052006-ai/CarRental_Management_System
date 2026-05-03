@@ -33,11 +33,11 @@ typedef struct {
 
 
 /*=================== Rental Functions ===================*/
-/*------------------- calculateCostRental -------------------*/
-double calculateCostRental (rentalTracking *r);
-
 /*------------------- rentalDiscount -------------------*/
-int rentalDiscount (int duration); // a rental time from customer will assgin into duration variable
+double rentalDiscount (int duration); // a rental time from customer will assgin into duration variable
+
+/*------------------- calculateCostRental -------------------*/
+void calculateCostRental (rentalTracking *cost);
 
 /*------------------- returnCar -------------------*/
 void returnCar (rentalTracking rentalsList[], int *rentalCount, vehicleInventory listCar[], int carCount); // mục đích là số lượng xe thuê sẽ giảm trong danh sách thuê xe, và trạng thái xe sẽ được cập nhật ở kho xe (vehicleInventory) là Available
