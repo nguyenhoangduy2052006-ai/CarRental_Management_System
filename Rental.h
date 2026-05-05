@@ -6,7 +6,7 @@
 #define MAX_RENTALS 100
 // Define discount
 #define LUXURY 1500
-#define PRIMIUM 1000
+#define PREMIUM 1000
 #define MEDIUM 500
 
 /*=================== Struct ===================*/
@@ -33,6 +33,9 @@ typedef struct {
 
 
 /*=================== Rental Functions ===================*/
+/*------------------- statusLable -------------------*/
+const char *getStatusLable (int status);
+
 /*------------------- rentalDiscount -------------------*/
 double rentalDiscount (int duration); // a rental time from customer will assgin into duration variable
 
@@ -46,10 +49,10 @@ void returnCar (rentalTracking rentalsList[], int *rentalCount, vehicleInventory
 void assignCar (rentalTracking rentalsList[], int *rentalCount, vehicleInventory listCar[], int carCount); // number of rental car list will be added in list
 
 /*------------------- displayRentalCarList -------------------*/
-void displayRentalCarList (rentalTracking rentalsList[], int rentalCount);
+void displayRentalCarList (vehicleInventory listCar[], int carCount);
 
 /*------------------- fileterByPrice -------------------*/
-void fileterByPrice (vehicleInventory listCar[], int carCount);
+void fileterByPrice (rentalTracking rentalsList[], int *rentalCount, vehicleInventory listCar[], int carCount);
 
 
 
