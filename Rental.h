@@ -33,8 +33,8 @@ typedef struct {
 
 
 /*=================== Rental Functions ===================*/
-/*------------------- statusLable -------------------*/
-const char *getStatusLable (int status);
+/*------------------- statusLabel -------------------*/
+const char *getStatusLabel (int status);
 
 /*------------------- rentalDiscount -------------------*/
 double rentalDiscount (int duration); // a rental time from customer will assgin into duration variable
