@@ -9,7 +9,7 @@
 
 
 /*=================== Rental Functions ===================*/
-/*------------------- statusLable -------------------*/
+/*------------------- getStatusLable -------------------*/
 const char *getStatusLabel (int status) {
 	if (status==AVAILABLE) return "AVAILABLE";
 	else if (status==RENTED)  return "RENTED";
@@ -34,7 +34,7 @@ void calculateCostRental (rentalTracking *cost) {
 void returnCar (rentalTracking rentalsList[], int *rentalCount, vehicleInventory listCar[], int carCount) {
 	char rentalID[10];
 	int pos=-1;
-	printf ("\n\t\t --- RETURN CAR --- |(0)-(0)|\n");
+	printf ("\n\t\t --- RETURN CAR --- |(0)-(0)|\n\n\n");
 	printf ("- Input Rental ID: ");
 	scanf ("%s", rentalID);
 	// check rentalID
@@ -77,7 +77,7 @@ void assignCar (rentalTracking rentalsList[], int *rentalCount, vehicleInventory
 	customerInfor infor;
 	int duration;
 	rentalTracking assignInfor;
-	printf ("\n\t\t --- ASSIGN CAR ---\n\t\t|(0)-(0)|\n");
+	printf ("\n\t\t --- ASSIGN CAR ---\n\t\t     |(0)-(0)|\n");
 	// Input customer infor
 	int valid=0;
 	do {
@@ -121,10 +121,12 @@ void assignCar (rentalTracking rentalsList[], int *rentalCount, vehicleInventory
 		}
 		if (pos==-1) printf ("ERROR! NOT FOUND CAR ID.\n");
 			// Check status
-		if (listCar[pos].Status!=AVAILABLE) {
-			printf ("ERROR! CAR NOT AVAILABLE :((\n");
-			pos=-1;
-	}
+		else {
+			if (listCar[pos].Status!=AVAILABLE) {
+				printf ("ERROR! CAR NOT AVAILABLE :((\n");
+				pos=-1;
+			}
+		}
 	} while (pos==-1);
 
 	// Input Duration

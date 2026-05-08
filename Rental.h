@@ -33,7 +33,7 @@ typedef struct {
 
 
 /*=================== Rental Functions ===================*/
-/*------------------- statusLabel -------------------*/
+/*------------------- getStatusLabel -------------------*/
 const char *getStatusLabel (int status);
 
 /*------------------- rentalDiscount -------------------*/

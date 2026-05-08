@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <string.h>
 //================ Declare files ===================
+#include "FileHelper.h"
 #include "Vehicle.h"
 #include "Rental.h"
 
@@ -14,5 +15,6 @@ void checkMaintenance (vehicleInventory listCar[], int carCount);
 
 /*------------------- revenueReport -------------------*/
 void revenueReport (rentalTracking rentalsList[], int rentalCount);
+
 
 #endif

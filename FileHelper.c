@@ -98,3 +98,8 @@ void saveRental (rentalTracking rentalsList[], int rentalCount) {
 	}
 	fclose(RC);
 }
+
+
+
+
+
