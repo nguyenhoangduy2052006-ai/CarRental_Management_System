@@ -70,18 +70,16 @@ int main(int argc, char *argv[]) {
 							// gọi hàm hiển thị bảng danh danh ô tô kèm các thông tin của mỗi chiếc ô tô (Car Name, Year, Status,...)	
 							displayRentalCarList(listCar, carCount);
 							// goi các hàm tính tính tiền cho khách hàng
-							printf("\n--------------------------------------------------------------------------------\n");
+							printf("\n-------------------------------------------------------------------------------------\n\n");
 							printf ("1. RENT A CAR. |(0)-(0)|\n");
-							printf ("0. BACK TO MENU\n");
+							printf ("0. BACK TO MENU\n\n");
 							printf ("INPUT YOUR CHOICE: ");
 							int rentChoice;
 							scanf ("%d", &rentChoice);
 							if (rentChoice==1) {
 								system ("cls");
 								assignCar (rentalsList, &rentalCount, listCar, carCount);
-								printf ("\nENTER TO FINISH.");
-								while (getchar()!='\n');
-								getchar();
+								printf ("\nENTER TO FINISH.");								
 							}
 							break;
 						}
@@ -115,6 +113,15 @@ int main(int argc, char *argv[]) {
 								system ("cls");
 								fileterByPrice (rentalsList, &rentalCount, listCar, carCount);
 							}
+							printf ("\n\n");
+							printf ("1. ASSIGN A CAR. |(0)-(0)|\n\n");
+							printf ("0. BACK TO MENU\n\n");
+							printf ("INPUT YOUR CHOICE: ");
+							int assign1Choice;
+							scanf ("%d", &assign1Choice);
+							if (assign1Choice==1) {
+								assignCar (rentalsList, &rentalCount, listCar, carCount);
+							}												
 							break;
 						}
 
@@ -162,9 +169,11 @@ int main(int argc, char *argv[]) {
 							printf ("Error! choose again.\n");
 							break;
 					}
-					while (getchar()!='\n');
-					getchar();
-					system("cls");
+					if (customerChoice!=0) {
+						while (getchar()!='\n');
+						getchar();
+						system("cls");
+					}	
 				} while (customerChoice!=0);
 				
 				break;
@@ -322,10 +331,11 @@ int main(int argc, char *argv[]) {
 											printf ("ERROR! YOUR CHOICE.\n");
 											break;
 									}
-									while (getchar()!='\n');
-									getchar();
-									system("cls");
-									
+									if (updateRentalCarChoice!=0) {
+										while (getchar()!='\n');
+										getchar();
+										system("cls");
+									}									
 								} while (updateRentalCarChoice!=0);
 								break;
 							}
@@ -397,9 +407,11 @@ int main(int argc, char *argv[]) {
 							default:
 								printf ("ERROR! YOUR CHOICE ^^\"\n");
 						}
-						while (getchar()!='\n');
-						getchar();
-						system("cls");
+						if (serverChoice!=0) {
+							while (getchar()!='\n');
+							getchar();
+							system("cls");
+						}						
 					} while (serverChoice!=0);
 					
 				}
@@ -410,7 +422,7 @@ int main(int argc, char *argv[]) {
 				break;
 			}
 			case 0: // Menu to exit
-				printf ("GOOD BY SEE YOU LATER \"||(0)-(0)||\" ^_^\n");
+				printf ("GOOD BY SEE YOU LATER \"||(0)-(0)||\" ^_^\n\n\n");
 				saveCar (listCar, carCount);
 				saveRental (rentalsList, rentalCount);
 				break;

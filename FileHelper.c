@@ -15,7 +15,7 @@ void loadCar (vehicleInventory listCar[], int *carCount) {
 	} 
 	fscanf(RC, "%d\n", carCount);
 	for (int i=0; i<*carCount; i++) {
-		fscanf (RC, "%s %s %s %d %lf %d\n", 
+		fscanf (RC, " %[^|]|%[^|]|%[^|]|%d|%lf|%d\n", 
 		listCar[i].CarID,
 		listCar[i].Brand,
 		listCar[i].Model,
@@ -36,7 +36,7 @@ void loadRental (rentalTracking rentalsList[], int *rentalCount) {
 	}
 	fscanf (RC, "%d\n", rentalCount);
 	for (int i=0; i<*rentalCount; i++) {
-		fscanf (RC, "%s %s %s %s %s %d %d %lf %lf %lf %lf\n",
+		fscanf (RC, " %[^|]|%[^|]|%[^|]|%[^|]|%[^|]|%d|%d|%lf|%lf|%lf|%lf\n",
 		rentalsList[i].RentalID,
 		rentalsList[i].CarID,
 		rentalsList[i].Customer.Name,
@@ -63,7 +63,7 @@ void saveCar (vehicleInventory listCar[], int carCount) {
 	}
 	fprintf (RC, "%d\n", carCount);
 	for (int i=0; i<carCount; i++) {
-		fprintf (RC, "%s %s %s %d %.2lf %d\n", 
+		fprintf (RC, "%s|%s|%s|%d|%.2lf|%d\n", 
 		listCar[i].CarID,
 		listCar[i].Brand,
 		listCar[i].Model,
@@ -83,7 +83,7 @@ void saveRental (rentalTracking rentalsList[], int rentalCount) {
 	}
 	fprintf (RC, "%d\n", rentalCount);
 	for (int i=0; i<rentalCount; i++) {
-		fprintf (RC, "%s %s %s %s %s %d %d %.2lf %.2lf %.2lf %.2lf\n",
+		fprintf (RC, "%s|%s|%s|%s|%s|%d|%d|%.2lf|%.2lf|%.2lf|%.2lf\n",
 		rentalsList[i].RentalID,
 		rentalsList[i].CarID,
 		rentalsList[i].Customer.Name,

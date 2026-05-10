@@ -1,0 +1,8 @@
+7
+RC002|Toyota|Camry 2.0G|2024|550.00|0
+RC003|Toyota|Raize|2022|500.00|0
+RC004|Ford|Ranger|2026|600.00|0
+RC005|Ford|Everest - Titanium|2025|700.00|0
+RC006|Ford|Everest - Platinum|2025|800.00|1
+RC007|Mazda|CX-8|2026|600.00|0
+RC007|Mazda|CX-10|2026|900.00|0

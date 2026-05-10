@@ -68,7 +68,7 @@ void returnCar (rentalTracking rentalsList[], int *rentalCount, vehicleInventory
 	// Save into file
 	saveRental (rentalsList, *rentalCount);
 	
-	printf ("\n\t\t --- CAR RETURNED SUCCESSFULLY! ---\n\t\t|(0)-(0)|\n");
+	printf ("\n\t\t --- CAR RETURNED SUCCESSFULLY! ---\n\t\t\t    |(0)-(0)|\n");
 }
 
 /*------------------- assignCar -------------------*/
@@ -84,9 +84,9 @@ void assignCar (rentalTracking rentalsList[], int *rentalCount, vehicleInventory
 		printf ("\n1. Input your information:\n");
 		printf ("- Name: ");
 		scanf (" %[^\n]", infor.Name);
-		printf ("Phone: ");
+		printf ("- Phone: ");
 		scanf (" %[^\n]", infor.Phone);
-		printf ("ID card: ");
+		printf ("- ID card: ");
 		scanf (" %[^\n]", infor.IDCard);
 		// valid infor 
 		if (strlen(infor.Name)==0 ||
@@ -109,6 +109,7 @@ void assignCar (rentalTracking rentalsList[], int *rentalCount, vehicleInventory
 		}
 	} while (valid==0);
 	// Input car ID
+	printf ("\n");
 	printf ("2. Input car ID: ");
 	int pos=-1;
 	do {
@@ -161,7 +162,7 @@ void assignCar (rentalTracking rentalsList[], int *rentalCount, vehicleInventory
 	saveRental (rentalsList, *rentalCount);
 	saveCar (listCar, carCount);
 	// Display in the minor
-	printf ("\n\t\t -- CAR ASSIGN SUCCESSFULLY! --- \n\t\t|(0)-(0)|");
+	printf ("\n\t\t -- CAR ASSIGN SUCCESSFULLY! --- \n\t\t\t  |(0)-(0)|\n");
 	printf ("- RENTAL ID: %s\n", assignInfor.RentalID);
 	printf ("- CAR ID: %s\n", assignInfor.CarID);
 	printf ("- DURATION: %d day(s)\n", assignInfor.Duration);
@@ -181,7 +182,7 @@ void displayRentalCarList (vehicleInventory listCar[], int carCount) {
 	printf ("\n\t\t === LIST OF RENTAL CARS ===\n\n");
 	printf ("%-10s %-20s %-20s %-8s %-12s %-15s\n",
 	"CAR ID", "BRAND", "MODEL", "YEAR", "DAILY RATE", "STATUS");
-	printf("--------------------------------------------------------------------\n");
+	printf("-------------------------------------------------------------------------------------\n");
 	// Print rental car
 	char statusLabel[15];
 	for (int i=0; i<carCount; i++) {
@@ -198,7 +199,7 @@ void displayRentalCarList (vehicleInventory listCar[], int carCount) {
 void fileterByPrice (rentalTracking rentalsList[], int *rentalCount, vehicleInventory listCar[], int carCount) {
 	double budget;
 	int check=0;
-	printf ("\n\t\t === CHOOSE RENTAL CAR FOLLOW YOUR BUDGET ===\n\t\t|(0)-(0)|\n\n");
+	printf ("\n\t\t === CHOOSE RENTAL CAR FOLLOW YOUR BUDGET ===\n\t\t\t     |(0)-(0)|\n\n");
 	// Check budget>500$?
 	do {
 		printf ("- Input your budget: ");
@@ -210,38 +211,36 @@ void fileterByPrice (rentalTracking rentalsList[], int *rentalCount, vehicleInve
 	// Check budget>=1500$?
 	if (budget>=1500) {
 		printf ("\n\t=== LIST OF LUXURY CARS ===\n\n");
-		printf ("%-15s %-15s %-15s %-12s %-15s\n", "CAR ID", "BRAND", "MODEL", "DAILY RATE", "STATUS");
+		printf ("%-15s %-15s %-20s %-12s %-15s\n", "CAR ID", "BRAND", "MODEL", "DAILY RATE", "STATUS");
 		printf ("----------------------------------------------------------------------------------\n");
 		for (int i=0; i<carCount; i++) {
 			if (listCar[i].DailyRate>=1500) {
-				printf ("%-15s %-15s %-15s %-12.2lf %-15s\n", listCar[i].CarID, listCar[i].Brand, listCar[i].Model, listCar[i].DailyRate, getStatusLabel(listCar[i].Status));
+				printf ("%-15s %-15s %-20s %-12.2lf %-15s\n", listCar[i].CarID, listCar[i].Brand, listCar[i].Model, listCar[i].DailyRate, getStatusLabel(listCar[i].Status));
 			}
 		}
 	}
 	// Check budget>=1000$?
 	else if (budget>=1000) {
 		printf ("\n\t=== LIST OF PREMIUM CARS ===\n\n");
-		printf ("%-15s %-15s %-15s %-12s %-15s\n", "CAR ID", "BRAND", "MODEL", "DAILY RATE", "STATUS");
-		printf ("--------------------------------------------------------\n");
+		printf ("%-15s %-15s %-20s %-12s %-15s\n", "CAR ID", "BRAND", "MODEL", "DAILY RATE", "STATUS");
+		printf ("---------------------------------------------------------------------------------\n");
 		for (int i=0; i<carCount; i++) {
 			if (listCar[i].DailyRate>=1000) {
-				printf ("%-15s %-15s %-15s %-12.2lf %-15s\n", listCar[i].CarID, listCar[i].Brand, listCar[i].Model, listCar[i].DailyRate, getStatusLabel(listCar[i].Status));
+				printf ("%-15s %-15s %-20s %-12.2lf %-15s\n", listCar[i].CarID, listCar[i].Brand, listCar[i].Model, listCar[i].DailyRate, getStatusLabel(listCar[i].Status));
 			}
 		}
 	}
 	else {
 		printf ("\n\t=== LIST OF MEDIUM CARS ===\n\n");
-		printf ("%-15s %-15s %-15s %-12s %-15s\n", "CAR ID", "BRAND", "MODEL", "DAILY RATE", "STATUS");
-		printf ("--------------------------------------------------------\n");
+		printf ("%-15s %-15s %-20s %-12s %-15s\n", "CAR ID", "BRAND", "MODEL", "DAILY RATE", "STATUS");
+		printf ("---------------------------------------------------------------------------------\n");
 		for (int i=0; i<carCount; i++) {
-			if (listCar[i].DailyRate>=500) {
-				printf ("%-15s %-15s %-15s %-12.2lf %-15s\n", listCar[i].CarID, listCar[i].Brand, listCar[i].Model, listCar[i].DailyRate, getStatusLabel(listCar[i].Status));
+			if (listCar[i].DailyRate>=500 && listCar[i].DailyRate<=1000) {
+				printf ("%-15s %-15s %-20s %-12.2lf %-15s\n", listCar[i].CarID, listCar[i].Brand, listCar[i].Model, listCar[i].DailyRate, getStatusLabel(listCar[i].Status));
 			}
 		}
 	}
-	// Call assignCar function
-	assignCar (rentalsList, rentalCount, listCar, carCount);
-	printf ("\n\t\t \"YOU RENTED CAR SUCCESSFULLY!\" ^^ |(0)-(0)| ^^\n");
+
 }
 
 

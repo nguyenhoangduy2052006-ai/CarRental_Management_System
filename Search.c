@@ -55,7 +55,7 @@ void searchByBrand (vehicleInventory listCar[], int carCount) {
 	// Valid input
 	printf ("- Input Car Brand: ");
 	do {
-		scanf ("%s", brand);
+		scanf (" %[^\n]", brand);
 		if (strlen(brand)==0) printf ("\"ERROR! ENTER BRAND AGAIN.\"\n");
 		else if (strlen(brand)>19) printf ("\"ERROR! BRAND ONLY <= 20 CHARACTERS.\"\n");
 		else valid=1;
@@ -64,13 +64,13 @@ void searchByBrand (vehicleInventory listCar[], int carCount) {
 	strcpy(brandUpper, brand);
 	toUpperStr(brandUpper);
 	// Find cars by brand name
-	printf ("%-10s %-15s %-15s %-12s %-15s\n", "CAR ID", "BRAND", "MODEL", "DAILY RATE", "STATUS");
+	printf ("%-10s %-15s %-20s %-12s %-15s\n", "CAR ID", "BRAND", "MODEL", "DAILY RATE", "STATUS");
 	printf ("------------------------------------------------------------------------------------\n");
 	for (int i=0; i<carCount; i++) {
 		strcpy(carBrandUpper, listCar[i].Brand);
 		toUpperStr(carBrandUpper);
 		if (strcmp(carBrandUpper, brandUpper)==0) {
-			printf ("%-10s %-15s %-15s %-12.2lf %-15s\n",
+			printf ("%-10s %-15s %-20s %-12.2lf %-15s\n",
 			listCar[i].CarID,
 			listCar[i].Brand,
 			listCar[i].Model,
@@ -100,7 +100,7 @@ void searchByCarID (vehicleInventory listCar[], int carCount) {
 		
 	} while (valid==0);
 	// Find from Car ID
-	printf ("%-10s %-15s %-15s %-12s %-15s\n", "CAR ID", "BRAND", "MODEL", "DAILY RATE", "STATUS");
+	printf ("%-10s %-15s %-20s %-12s %-15s\n", "CAR ID", "BRAND", "MODEL", "DAILY RATE", "STATUS");
 	printf ("------------------------------------------------------------------------------------\n");
 	/*for (int i=0; i<carCount; i++) {
 		if (strcmp(listCar[i].CarID, carID)==0) {
@@ -117,7 +117,7 @@ void searchByCarID (vehicleInventory listCar[], int carCount) {
 	*/
 	int pos = binarySearchCar(listCar, carCount, carID);
 	if (pos!= -1) {
-		printf ("%-10s %-15s %-15s %-12.2lf %-15s\n",
+		printf ("%-10s %-15s %-20s %-12.2lf %-15s\n",
 			listCar[pos].CarID,
 			listCar[pos].Brand,
 			listCar[pos].Model,
@@ -154,18 +154,18 @@ void searchByRentalID (rentalTracking rentalsList[], int rentalCount) {
 	int pos=binarySearchRental(rentalsList, rentalCount, rentalID);
 	if (pos!=-1) {
 		// Display customer infor
-		printf ("=== CUSTOMER INFORMATION ===\n");
+		printf ("\n\t\t === CUSTOMER INFORMATION ===\n\n");
 		printf  ("%-20s %-15s %-20s\n", "NAME", "PHONE", "ID CARD");
-		printf ("---------------------------------------------------------------------\n");
+		printf ("-------------------------------------------------------------------------------\n");
 		printf ("%-20s %-15s %-20s\n", rentalsList[pos].Customer.Name,
 		rentalsList[pos].Customer.Phone,
 		rentalsList[pos].Customer.IDCard);
 		// Display rental ID infor
 		printf ("\n");
-		printf ("=== RENTAL INFORMATION ===\n");
+		printf ("\n\t\t === RENTAL INFORMATION ===\n\n");
 		printf ("%-10s %-10s %-12s %-15s %-10s %-10s\n", "RENTAL ID", "DURATION", "DAILY RATE", "STATUS", "DISCOUNT", "FINAL COST");
-		printf ("------------------------------------------------------------------------------------------------------------------------------------\n");
-		printf ("%-10s %-10d %-12.2lf %-15s %-10.2lf%% %-10.2lf\n",
+		printf ("-------------------------------------------------------------------------------\n");
+		printf ("%-10s %-10d %-12.2lf %-15s %-8.2lf %-10.2lf$\n",
 			rentalsList[pos].RentalID,
 			rentalsList[pos].Duration,
 			rentalsList[pos].DailyRate,
@@ -197,10 +197,11 @@ void sortByBrand (vehicleInventory listCar[], int carCount) {
 		}
 	}
 	// Display brand list sorted
-	printf ("\n%-5s %-15s %-20s %-15s %-10s %-15s\n", 
+	printf ("\n%-5s %-15s %-15s %-20s %-10s %-15s\n", 
 	"#", "CAR ID", "BRAND", "MODEL", "YEAR", "STATUS");
+	printf("-------------------------------------------------------------------------------------\n");
 	for (int i=0; i<carCount; i++) {
-		printf ("%-5d %-15s %-20s %-15s %-10d %-15s\n",
+		printf ("%-5d %-15s %-20s %-15s %-10d %-15s\n\n",
 		i+1, listCar[i].CarID,
 		listCar[i].Brand,
 		listCar[i].Model,

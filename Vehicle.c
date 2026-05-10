@@ -12,9 +12,9 @@ void addVehicles (vehicleInventory listCar[], int *carCount) {
 	if (*carCount<MAX_CARS) {
 		printf ("\n\t\t --- ADD A NEW CAR --- |(0)-(0)|\n\n");
 		printf ("- Input Car Brand: ");
-		scanf ("%s", addCar.Brand);
+		scanf (" %[^\n]", addCar.Brand);
 		printf ("- Input Car Model: ");
-		scanf ("%s", addCar.Model);
+		scanf (" %[^\n]", addCar.Model);
 		printf ("- Input Car Year: ");
 		scanf ("%d", &addCar.Year);
 		printf ("- Input Car Daily Rate: ");
@@ -23,7 +23,9 @@ void addVehicles (vehicleInventory listCar[], int *carCount) {
 		while (addCar.DailyRate<500) {
 			printf ("ERROR! MINI 500$\n");
 			printf ("- Input Car Daily Rate: ");
+			while (getchar()!='\n');
 			scanf ("%lf", addCar.DailyRate);
+			continue;
 		}
 		// Auto-generate Car ID (RCxxx)
 		char newCarID [10];
